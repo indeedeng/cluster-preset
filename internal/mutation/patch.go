@@ -49,7 +49,7 @@ func PatchEnvVar(source, added []corev1.EnvVar, base string) *Patch {
 	envVars = append(envVars, source...)
 
 	return &Patch{
-		Op: "replace",
+		Op: "add",
 		Path: base,
 		Value: envVars,
 	}

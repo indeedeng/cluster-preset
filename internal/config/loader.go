@@ -2,12 +2,13 @@ package config
 
 import (
 	"fmt"
-	"github.com/sirupsen/logrus"
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
-	"k8s.io/api/settings/v1alpha1"
 	"sync"
 	"time"
+
+	"github.com/sirupsen/logrus"
+	"gopkg.in/yaml.v2"
+	"k8s.io/api/settings/v1alpha1"
 )
 
 var (

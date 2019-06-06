@@ -27,7 +27,7 @@ func Test_PatchEnvVar(t *testing.T) {
 	}
 
 	patch := mutation.PatchEnvVar(existing, added, "")
-	require.Equal(t, "replace", patch.Op)
+	require.Equal(t, "add", patch.Op)
 	require.Equal(t, "", patch.Path)
 
 	value := patch.Value
