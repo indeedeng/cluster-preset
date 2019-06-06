@@ -1,10 +1,15 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"github.com/mjpitz/cluster-preset/internal/config"
 	"github.com/mjpitz/cluster-preset/internal/mutation"
+	"github.com/sirupsen/logrus"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -22,6 +27,8 @@ func main() {
 	port := 8080
 	failureRetryInterval := time.Second * 30
 	reloadInterval := time.Minute
+	certFile := "/etc/webhook/certs/cert.pem"
+	keyFile := "/etc/webhook/certs/key.pem"
 
 	cmd := &cobra.Command{
 		Use: "cluster-preset",
@@ -40,18 +47,29 @@ func main() {
 
 			mutation.RegisterMutateWebhook(server, holder)
 
-			address := fmt.Sprintf("0.0.0.0:%d", port)
-			if err := http.ListenAndServe(address, server); err != nil {
-				panic(err.Error())
-			}
+			go func() {
+				address := fmt.Sprintf("0.0.0.0:%d", port)
+				if err := http.ListenAndServeTLS(address, certFile, keyFile, server); err != nil {
+					panic(err.Error())
+				}
+			}()
+
+			// listening OS shutdown singal
+			signalChan := make(chan os.Signal, 1)
+			signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
+			<-signalChan
+
+			logrus.Info("received OS shutdown signal, shutting down webhook server gracefully...")
 		},
 	}
 
 	flags := cmd.Flags()
-	flags.StringVar(&preset, "preset", preset, "(optional) path to the config file")
+	flags.StringVar(&preset, "preset", preset, "(optional) path to the file container cluster presets")
 	flags.IntVar(&port, "port", port, "(optional) the port to bind to")
 	flags.DurationVar(&failureRetryInterval, "retry-interval", failureRetryInterval, "(optional) specify the duration between reloads on failure")
 	flags.DurationVar(&reloadInterval, "reload-interval", reloadInterval, "(optional) specify the duration between reloads on success")
+	flag.StringVar(&certFile, "cert", certFile, "(optional) file containing the x509 Certificate for HTTPS")
+	flag.StringVar(&keyFile, "key", keyFile, "(optional) file containing the x509 private key to --cert")
 
 	if err := cmd.Execute(); err != nil {
 		panic(err.Error())

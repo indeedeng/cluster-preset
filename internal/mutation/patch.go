@@ -7,6 +7,7 @@ import (
 	"k8s.io/api/settings/v1alpha1"
 )
 
+// Patch represents a JSON patch to be applied
 type Patch struct {
 	Op		string		`json:"op"`
 	Path	string		`json:"path"`
@@ -17,6 +18,7 @@ const (
 	envPatchTemplate = "/spec/containers/%d/env"
 )
 
+// PatchPod patches a single pod with the provided preset spec
 func PatchPod(spec *v1alpha1.PodPresetSpec, pod *corev1.Pod) []*Patch {
 	patches := make([]*Patch, 0)
 
@@ -28,6 +30,7 @@ func PatchPod(spec *v1alpha1.PodPresetSpec, pod *corev1.Pod) []*Patch {
 	return patches
 }
 
+// PatchEnvVar creates a patch for updating a containers environment variables.
 func PatchEnvVar(source, added []corev1.EnvVar, base string) *Patch {
 	idx := make(map[string]bool)
 	for _, src := range source {

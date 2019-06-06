@@ -36,6 +36,7 @@ func init() {
 	_ = v1.AddToScheme(runtimeScheme)
 }
 
+// RegisterMutateWebhook manages binding endpoint invocations to underlying business logic.
 func RegisterMutateWebhook(server *gin.Engine, holder *config.Holder) {
 	webhook := &mutateWebhook{holder }
 
@@ -63,16 +64,15 @@ func (w *mutateWebhook) mutationHandler(ctx *gin.Context) {
 		return
 	}
 
-	var admissionResponse *v1beta1.AdmissionResponse
 	review := &v1beta1.AdmissionReview{}
 	if _, _, err := deserializer.Decode(body, nil, review); err != nil {
 		if err := ctx.AbortWithError(http.StatusBadRequest, errInvalidBody); err != nil {
 			logrus.Errorf("failed to abort request: %s", err.Error())
 		}
 		return
-	} else {
-		admissionResponse = mutate(w.Holder.Get(), review)
 	}
+
+	admissionResponse := mutate(w.Holder.Get(), review)
 
 	if admissionResponse != nil && review.Request != nil {
 		admissionResponse.UID = review.Request.UID
