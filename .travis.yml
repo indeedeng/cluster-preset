@@ -1,15 +1,15 @@
 language: go
 
 go:
-  - 1.12.x
+  - 1.11.x
 
 env:
   - GO111MODULE=on
 
 before_install:
   # gox simplifies building for multiple architectures
-  - go get -u golang.org/x/lint/golint
-  - go get -u github.com/mitchellh/gox
+  - go get golang.org/x/lint/golint
+  - go get github.com/mitchellh/gox
 
 install:
 # skip
