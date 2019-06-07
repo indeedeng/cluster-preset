@@ -38,7 +38,10 @@ func mutate(spec *v1alpha1.PodPresetSpec, review *v1beta1.AdmissionReview) *v1be
 		}
 	}
 
+	pt := v1beta1.PatchTypeJSONPatch
 	return &v1beta1.AdmissionResponse{
+		Allowed: true,
 		Patch: patchData,
+		PatchType: &pt,
 	}
 }
