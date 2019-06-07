@@ -1,0 +1,27 @@
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: cluster-presets-webhook
+  labels:
+    app: cluster-presets
+  annotations:
+    certmanager.k8s.io/inject-ca-from: "kube-system/cluster-preset-certificate"
+webhooks:
+  - name: cluster-presets.mjpitz.com
+    clientConfig:
+      service:
+        name: cluster-presets-service
+        namespace: kube-system
+        path: "/mutate"
+    rules:
+      - operations: [ "CREATE" ]
+        apiGroups: [ "" ]
+        apiVersions: [ "v1" ]
+        resources: [ "pods" ]
+    failurePolicy: Fail
+    namespaceSelector:
+      matchExpressions:
+        - key: "name"
+          operator: "NotIn"
+          values:
+            - "kube-system"

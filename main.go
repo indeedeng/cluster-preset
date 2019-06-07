@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"github.com/mjpitz/cluster-preset/internal/config"
 	"github.com/mjpitz/cluster-preset/internal/mutation"
@@ -68,8 +67,8 @@ func main() {
 	flags.IntVar(&port, "port", port, "(optional) the port to bind to")
 	flags.DurationVar(&failureRetryInterval, "retry-interval", failureRetryInterval, "(optional) specify the duration between reloads on failure")
 	flags.DurationVar(&reloadInterval, "reload-interval", reloadInterval, "(optional) specify the duration between reloads on success")
-	flag.StringVar(&certFile, "cert", certFile, "(optional) file containing the x509 Certificate for HTTPS")
-	flag.StringVar(&keyFile, "key", keyFile, "(optional) file containing the x509 private key to --cert")
+	flags.StringVar(&certFile, "cert", certFile, "(optional) file containing the x509 Certificate for HTTPS")
+	flags.StringVar(&keyFile, "key", keyFile, "(optional) file containing the x509 private key to --cert")
 
 	if err := cmd.Execute(); err != nil {
 		panic(err.Error())
