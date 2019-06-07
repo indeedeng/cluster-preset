@@ -1,0 +1,38 @@
+language: go
+
+go:
+  - 1.12.x
+
+env:
+  - GO111MODULE=on
+
+before_install:
+  # gox simplifies building for multiple architectures
+  - go get golang.org/x/lint/golint
+  - go get github.com/mitchellh/gox
+
+install:
+# skip
+
+script:
+  - make deps
+  - make test
+  - make deploy
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: "${GITHUB_OAUTH_TOKEN_SECURE}"
+  file:
+    - bin/cluster-preset_darwin_386
+    - bin/cluster-preset_darwin_amd64
+    - bin/cluster-preset_linux_386
+    - bin/cluster-preset_linux_amd64
+    - bin/cluster-preset_linux_arm
+    - bin/cluster-presets_linux_arm64
+    - bin/cluster-preset_windows_386.exe
+    - bin/cluster-preset_windows_amd64.exe
+  on:
+    repo: mjpitz/cluster-preset
+    tags: true

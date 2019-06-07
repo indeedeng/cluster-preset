@@ -1,0 +1,5 @@
+env:
+- name: "INJECTED_VARIABLE_1"
+  value: "test1"
+- name: "INJECTED_VARIABLE_2"
+  value: "test2"

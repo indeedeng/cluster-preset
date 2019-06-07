@@ -1,0 +1,54 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Issuer
+metadata:
+  name: cluster-preset-selfsign
+  namespace: kube-system
+  labels:
+    app: cluster-presets
+spec:
+  selfSigned: {}
+
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: cluster-preset-ca
+  namespace: kube-system
+  labels:
+    app: cluster-presets
+spec:
+  secretName: cluster-preset-ca
+  issuerRef:
+    name: cluster-preset-selfsign
+  commonName: ca.webhook.cluster-presets
+  isCA: true
+
+---
+
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Issuer
+metadata:
+  name: cluster-preset-ca
+  namespace: kube-system
+  labels:
+    app: cluster-presets
+spec:
+  ca:
+    secretName: cluster-preset-ca
+
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: cluster-preset-certificate
+  namespace: kube-system
+  labels:
+    app: cluster-presets
+spec:
+  secretName: cluster-preset-certs
+  issuerRef:
+    name: cluster-preset-ca
+  dnsNames:
+  - cluster-presets-service
+  - cluster-presets-service.kube-system
+  - cluster-presets-service.kube-system.svc
