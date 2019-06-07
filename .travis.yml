@@ -16,7 +16,7 @@ install:
 
 script:
   - make deps
-  - make test
+#  - make test
   - make deploy
 
 deploy:
