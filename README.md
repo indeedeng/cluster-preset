@@ -8,7 +8,7 @@ Unlike other solutions that exist, ClusterPresets do not require pods to be labe
 
 This is currently an alpha project.
 Ideally, we want to help contribute this functionality [upstream](https://github.com/kubernetes/kubernetes/issues/48180).
-While we work with the community on driving a canonical solution forward, we've open sourced the one we've been using.
+While we work with the community on driving a canonical solution forward, we've open sourced the one we're using.
 
 ![GitHub](https://img.shields.io/github/license/mjpitz/cluster-preset.svg)
 [![Build Status](https://travis-ci.com/mjpitz/cluster-preset.svg?branch=master)](https://travis-ci.com/mjpitz/cluster-preset)
