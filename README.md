@@ -7,3 +7,7 @@ Unlike other solutions that exist, ClusterPresets do not require pods to be labe
 ## Status
 
 This project is an alpha status project currently.
+
+## License
+
+ClusterPreset is licensed under the [MIT License](LICENSE).
