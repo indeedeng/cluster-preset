@@ -1,0 +1,14 @@
+FROM debian:stretch-slim
+
+ARG VERSION=0.0.2
+
+RUN apt-get update -y && apt-get install -y curl
+
+COPY docker/install-github-binary /usr/bin/install-github-binary
+RUN install-github-binary ${VERSION} && rm /usr/bin/install-github-binary
+
+RUN useradd -ms /bin/sh cluster-preset
+WORKDIR /home/cluster-preset
+USER cluster-preset
+
+ENTRYPOINT [ "cluster-preset" ]

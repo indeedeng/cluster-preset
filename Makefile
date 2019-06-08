@@ -19,4 +19,9 @@ deploy:
 
 docker:
 	GOOS=linux GOARCH=amd64 go build
-	docker build -t mjpitz/cluster-preset:latest -f Dockerfile .
+	docker build -t mjpitz/cluster-preset:latest .
+
+dockerx:
+	docker buildx rm mjpitz--cluster-preset || echo "mjpitz--cluster-preset does not exist"
+	docker buildx create --name mjpitz--cluster-preset --use
+	docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -f Dockerfile.pub -t mjpitz/cluster-preset:latest .
