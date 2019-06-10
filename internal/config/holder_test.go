@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mjpitz/cluster-preset/internal/config"
+	"github.com/indeedeng/cluster-preset/internal/config"
 	"github.com/stretchr/testify/require"
 )
 

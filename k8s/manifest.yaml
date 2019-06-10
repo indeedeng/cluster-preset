@@ -90,7 +90,7 @@ spec:
       serviceAccountName: cluster-presets-service-account
       containers:
       - name: cluster-preset-webhook
-        image: mjpitz/cluster-preset:latest
+        image: indeedoss/cluster-preset:latest
         imagePullPolicy: IfNotPresent
         args:
         - --preset=/etc/cluster-presets/config/presets.yaml

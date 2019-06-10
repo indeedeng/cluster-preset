@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/mjpitz/cluster-preset/internal/config"
+	"github.com/indeedeng/cluster-preset/internal/config"
 	"github.com/sirupsen/logrus"
 	"k8s.io/api/admission/v1beta1"
 	admissionregistrationv1beta1 "k8s.io/api/admissionregistration/v1beta1"

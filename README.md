@@ -10,10 +10,10 @@ This is currently an alpha project.
 Ideally, we want to help contribute this functionality [upstream](https://github.com/kubernetes/kubernetes/issues/48180).
 While we work with the community on driving a canonical solution forward, we've open sourced the one we're using.
 
-![GitHub](https://img.shields.io/github/license/mjpitz/cluster-preset.svg)
-[![Build Status](https://travis-ci.com/mjpitz/cluster-preset.svg?branch=master)](https://travis-ci.com/mjpitz/cluster-preset)
-[![](https://images.microbadger.com/badges/image/mjpitz/cluster-preset.svg)](https://microbadger.com/images/mjpitz/cluster-preset)
-[![](https://images.microbadger.com/badges/version/mjpitz/cluster-preset.svg)](https://microbadger.com/images/mjpitz/cluster-preset)
+![GitHub](https://img.shields.io/github/license/indeedeng/cluster-preset.svg)
+[![Build Status](https://travis-ci.com/indeedeng/cluster-preset.svg?branch=master)](https://travis-ci.com/indeedeng/cluster-preset)
+[![Image Layers](https://images.microbadger.com/badges/image/indeedoss/cluster-preset.svg)](https://microbadger.com/images/indeedoss/cluster-preset)
+[![Image Version](https://images.microbadger.com/badges/version/indeedoss/cluster-preset.svg)](https://microbadger.com/images/indeedoss/cluster-preset)
 
 ## Getting Started
 
@@ -29,9 +29,9 @@ Once the system is up and running, you'll be able to spin up cluster-preset pret
 First, let's apply the default configuration to get things up and running.
 
 ```bash
-$ kubectl apply -f https://raw.githubusercontent.com/mjpitz/cluster-preset/master/k8s/certificate.yaml
-$ kubectl apply -f https://raw.githubusercontent.com/mjpitz/cluster-preset/master/k8s/manifest.yaml
-$ kubectl apply -f https://raw.githubusercontent.com/mjpitz/cluster-preset/master/k8s/webhook.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/indeedeng/cluster-preset/master/k8s/certificate.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/indeedeng/cluster-preset/master/k8s/manifest.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/indeedeng/cluster-preset/master/k8s/webhook.yaml
 ```
 
 Once everything is up and running, you can quickly test out the defaults:
