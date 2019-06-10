@@ -7,7 +7,6 @@ env:
   - GO111MODULE=on
 
 before_install:
-  # gox simplifies building for multiple architectures
   - go get golang.org/x/lint/golint
   - go get github.com/mitchellh/gox
 
@@ -34,5 +33,5 @@ deploy:
     - bin/cluster-preset_windows_386.exe
     - bin/cluster-preset_windows_amd64.exe
   on:
-    repo: mjpitz/cluster-preset
+    repo: indeedeng/cluster-preset
     tags: true

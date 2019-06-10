@@ -3,7 +3,7 @@ package mutation_test
 import (
 	"testing"
 
-	"github.com/mjpitz/cluster-preset/internal/mutation"
+	"github.com/indeedeng/cluster-preset/internal/mutation"
 	"github.com/stretchr/testify/require"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/api/settings/v1alpha1"

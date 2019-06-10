@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/mjpitz/cluster-preset/internal/config"
-	"github.com/mjpitz/cluster-preset/internal/mutation"
+	"github.com/indeedeng/cluster-preset/internal/config"
+	"github.com/indeedeng/cluster-preset/internal/mutation"
 	"github.com/sirupsen/logrus"
 	"net/http"
 	"os"

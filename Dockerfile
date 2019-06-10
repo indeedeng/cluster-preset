@@ -1,10 +1,13 @@
-FROM debian:stretch-slim
+FROM golang:1.12
 
-# TODO: download from github releases
-COPY cluster-preset /usr/local/bin/cluster-preset
+RUN go get golang.org/x/lint/golint
 
-RUN useradd -ms /bin/sh cluster-preset
-WORKDIR /home/cluster-preset
-USER cluster-preset
+ENV GO111MODULE on
+
+WORKDIR /go/src/cluster-preset
+
+COPY . .
+
+RUN make deps test install
 
 ENTRYPOINT [ "cluster-preset" ]
