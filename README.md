@@ -14,12 +14,13 @@ While we work with the community on driving a canonical solution forward, we've 
 [![Build Status](https://travis-ci.com/indeedeng/cluster-preset.svg?branch=master)](https://travis-ci.com/indeedeng/cluster-preset)
 [![Image Layers](https://images.microbadger.com/badges/image/indeedoss/cluster-preset.svg)](https://microbadger.com/images/indeedoss/cluster-preset)
 [![Image Version](https://images.microbadger.com/badges/version/indeedoss/cluster-preset.svg)](https://microbadger.com/images/indeedoss/cluster-preset)
+![NetflixOSS Lifecycle](https://img.shields.io/osslifecycle/indeedeng/cluster-preset.svg)
 
 ## Getting Started
 
 The current set of Kubernetes configurations requires use of cert-manager.
 [cert-manager](https://docs.cert-manager.io) is used to mint and issue TLS certificates using custom resource definitions.
-Installing the system is pretty easy. 
+Installing the system is pretty easy.
 
 ```bash
 $ kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v0.8.0/cert-manager.yaml
@@ -80,7 +81,7 @@ Current project code owners:
 * [wmgroot](https://github.com/wmgroot)
 
 We are working on providing a channel for communication.
-In the meantime, open a ticket, watch, or star the repository. 
+In the meantime, open a ticket, watch, or star the repository.
 
 ## Code of Conduct
 
