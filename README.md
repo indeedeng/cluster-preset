@@ -37,10 +37,11 @@ $ kubectl apply -f https://raw.githubusercontent.com/indeedeng/cluster-preset/ma
 Once everything is up and running, you can quickly test out the defaults:
 
 ```bash
-$ kubectl run -it --rm --restart=Never alpine --image=alpine -- echo "${CLUSTER}"
+$ kubectl run -it --rm --restart=Never alpine --image=alpine -- sh
+# echo "${CLUSTER}"
 us-west-1
 
-$ kubectl run -it --rm --restart=Never alpine --image=alpine -- echo "${STAGING_LEVEL}"
+# echo "${STAGING_LEVEL}" 
 production
 ```
 
@@ -88,4 +89,4 @@ ClusterPreset is governed by the [Contributor Covenant v1.4.1](CODE_OF_CONDUCT.m
 
 ## License
 
-ClusterPreset is licensed under the w[MIT License](LICENSE).
+ClusterPreset is licensed under the [MIT License](LICENSE).
