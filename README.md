@@ -14,7 +14,7 @@ While we work with the community on driving a canonical solution forward, we've 
 [![Build Status](https://travis-ci.com/indeedeng/cluster-preset.svg?branch=master)](https://travis-ci.com/indeedeng/cluster-preset)
 [![Image Layers](https://images.microbadger.com/badges/image/indeedoss/cluster-preset.svg)](https://microbadger.com/images/indeedoss/cluster-preset)
 [![Image Version](https://images.microbadger.com/badges/version/indeedoss/cluster-preset.svg)](https://microbadger.com/images/indeedoss/cluster-preset)
-![NetflixOSS Lifecycle](https://img.shields.io/osslifecycle/indeedeng/cluster-preset.svg)
+![OSS Lifecycle](https://img.shields.io/osslifecycle/indeedeng/cluster-preset.svg)
 
 ## Getting Started
 
