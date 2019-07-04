@@ -16,6 +16,14 @@ While we work with the community on driving a canonical solution forward, we've 
 [![Image Version](https://images.microbadger.com/badges/version/indeedoss/cluster-preset.svg)](https://microbadger.com/images/indeedoss/cluster-preset)
 ![OSS Lifecycle](https://img.shields.io/osslifecycle/indeedeng/cluster-preset.svg)
 
+### Supported Architectures
+
+The cluster-preset container is built using docker-buildx to provide support across multiple architectures. The following os/architecture pairs are currently supported:
+
+* `linux/amd64`
+* `linux/arm64`
+* `linux/arm/v7`
+
 ## Getting Started
 
 The current set of Kubernetes configurations requires use of cert-manager.
