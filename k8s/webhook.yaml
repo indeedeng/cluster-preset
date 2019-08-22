@@ -5,13 +5,13 @@ metadata:
   labels:
     app: cluster-presets
   annotations:
-    certmanager.k8s.io/inject-ca-from: "kube-system/cluster-preset-certificate"
+    certmanager.k8s.io/inject-ca-from: "cluster-present/cluster-preset-certificate"
 webhooks:
   - name: cluster-presets.indeed.com
     clientConfig:
       service:
         name: cluster-presets-service
-        namespace: kube-system
+        namespace: cluster-present
         path: "/mutate"
     rules:
       - operations: [ "CREATE" ]
@@ -24,4 +24,5 @@ webhooks:
         - key: "name"
           operator: "NotIn"
           values:
+            - "cluster-present"
             - "kube-system"
