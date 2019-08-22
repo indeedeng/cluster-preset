@@ -1,5 +1,12 @@
 default: install
 
+build-deps:
+	GO111MODULE=off go get -u oss.indeed.com/go/go-groups
+
+fmt:
+	go-groups -w .
+	gofmt -s -w .
+
 deps:
 	go get -v ./...
 

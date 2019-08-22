@@ -4,7 +4,9 @@ import (
 	"testing"
 
 	"github.com/indeedeng/cluster-preset/internal/mutation"
+
 	"github.com/stretchr/testify/require"
+
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/api/settings/v1alpha1"
 )
@@ -21,9 +23,9 @@ func Test_PatchEnvVar(t *testing.T) {
 	existing := make([]corev1.EnvVar, 0)
 
 	added := []corev1.EnvVar{
-		{ Name: "A", Value: "EXPECTED_A" },
-		{ Name: "A", Value: "RESET" },
-		{ Name: "B", Value: "EXPECTED_B" },
+		{Name: "A", Value: "EXPECTED_A"},
+		{Name: "A", Value: "RESET"},
+		{Name: "B", Value: "EXPECTED_B"},
 	}
 
 	patch := mutation.PatchEnvVar(existing, added, "")

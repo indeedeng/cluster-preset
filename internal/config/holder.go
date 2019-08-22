@@ -7,12 +7,14 @@ import (
 	"time"
 
 	"github.com/sirupsen/logrus"
+
 	"gopkg.in/yaml.v2"
+
 	"k8s.io/api/settings/v1alpha1"
 )
 
 var (
-	errFileRead = fmt.Errorf("failed to read config file")
+	errFileRead  = fmt.Errorf("failed to read config file")
 	errUnmarshal = fmt.Errorf("failed to unmarshal config data")
 )
 
@@ -20,8 +22,8 @@ var (
 // The reloaded configuration then replaces the current version in memory.
 func NewReloadingConfig(path string, reloadConfig *ReloadConfig) (*Holder, error) {
 	holder := &Holder{
-		path: path,
-		mu: &sync.RWMutex{},
+		path:    path,
+		mu:      &sync.RWMutex{},
 		current: nil,
 	}
 
@@ -30,7 +32,7 @@ func NewReloadingConfig(path string, reloadConfig *ReloadConfig) (*Holder, error
 	}
 
 	go func() {
-		for ; true ; {
+		for true {
 			sleepDuration := reloadConfig.ReloadInterval
 			if err := holder.Reload(); err != nil {
 				logrus.Errorf("failed to reload config: %s", err.Error())
@@ -47,7 +49,7 @@ func NewReloadingConfig(path string, reloadConfig *ReloadConfig) (*Holder, error
 type Holder struct {
 	path string
 
-	mu *sync.RWMutex
+	mu      *sync.RWMutex
 	current *v1alpha1.PodPresetSpec
 }
 

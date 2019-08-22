@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/indeedeng/cluster-preset/internal/config"
+
 	"github.com/stretchr/testify/require"
 )
 
@@ -29,7 +30,7 @@ func Test_ReloadingConfig(t *testing.T) {
 
 	holder, err := config.NewReloadingConfig(filename, &config.ReloadConfig{
 		FailureRetryInterval: time.Second,
-		ReloadInterval: time.Second,
+		ReloadInterval:       time.Second,
 	})
 	require.Nil(t, err)
 
@@ -44,7 +45,7 @@ func Test_ReloadingConfig(t *testing.T) {
 	err = ioutil.WriteFile(filename, []byte(reloadContent), 0644)
 	require.Nil(t, err)
 
-	time.Sleep(time.Second)	// wait for reload to happen
+	time.Sleep(time.Second) // wait for reload to happen
 
 	preset = holder.Get()
 	require.NotNil(t, preset)

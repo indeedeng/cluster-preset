@@ -2,9 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/indeedeng/cluster-preset/internal/config"
-	"github.com/indeedeng/cluster-preset/internal/mutation"
-	"github.com/sirupsen/logrus"
 	"net/http"
 	"os"
 	"os/signal"
@@ -12,6 +9,12 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+
+	"github.com/indeedeng/cluster-preset/internal/config"
+	"github.com/indeedeng/cluster-preset/internal/mutation"
+
+	"github.com/sirupsen/logrus"
+
 	"github.com/spf13/cobra"
 )
 
@@ -30,12 +33,12 @@ func main() {
 	keyFile := "/etc/webhook/certs/key.pem"
 
 	cmd := &cobra.Command{
-		Use: "cluster-preset",
+		Use:  "cluster-preset",
 		Long: longDescription,
 		Run: func(cmd *cobra.Command, args []string) {
 			holder, err := config.NewReloadingConfig(preset, &config.ReloadConfig{
 				FailureRetryInterval: failureRetryInterval,
-				ReloadInterval: reloadInterval,
+				ReloadInterval:       reloadInterval,
 			})
 
 			if err != nil {

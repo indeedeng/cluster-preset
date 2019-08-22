@@ -4,9 +4,11 @@ import (
 	"encoding/json"
 
 	"github.com/sirupsen/logrus"
+
 	"k8s.io/api/admission/v1beta1"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/api/settings/v1alpha1"
+
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -16,8 +18,8 @@ func mutate(spec *v1alpha1.PodPresetSpec, review *v1beta1.AdmissionReview) *v1be
 	pod := &corev1.Pod{}
 	if err := json.Unmarshal(req.Object.Raw, pod); err != nil {
 		logrus.Errorf("Could not unmarshal raw object: %v", err)
-		return &v1beta1.AdmissionResponse {
-			Result: &metav1.Status {
+		return &v1beta1.AdmissionResponse{
+			Result: &metav1.Status{
 				Message: err.Error(),
 			},
 		}
@@ -32,7 +34,7 @@ func mutate(spec *v1alpha1.PodPresetSpec, review *v1beta1.AdmissionReview) *v1be
 	if err != nil {
 		logrus.Errorf("Could not marshal patches: %v", err)
 		return &v1beta1.AdmissionResponse{
-			Result: &metav1.Status {
+			Result: &metav1.Status{
 				Message: err.Error(),
 			},
 		}
@@ -40,8 +42,8 @@ func mutate(spec *v1alpha1.PodPresetSpec, review *v1beta1.AdmissionReview) *v1be
 
 	pt := v1beta1.PatchTypeJSONPatch
 	return &v1beta1.AdmissionResponse{
-		Allowed: true,
-		Patch: patchData,
+		Allowed:   true,
+		Patch:     patchData,
 		PatchType: &pt,
 	}
 }

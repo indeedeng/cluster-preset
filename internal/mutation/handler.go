@@ -6,18 +6,23 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+
 	"github.com/indeedeng/cluster-preset/internal/config"
+
 	"github.com/sirupsen/logrus"
+
 	"k8s.io/api/admission/v1beta1"
 	admissionregistrationv1beta1 "k8s.io/api/admissionregistration/v1beta1"
 	corev1 "k8s.io/api/core/v1"
+
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
+
 	"k8s.io/kubernetes/pkg/apis/core/v1"
 )
 
 var (
-	errNoBody = fmt.Errorf("empty body")
+	errNoBody      = fmt.Errorf("empty body")
 	errInvalidBody = fmt.Errorf("invalid json payload")
 
 	runtimeScheme = runtime.NewScheme()
@@ -38,7 +43,7 @@ func init() {
 
 // RegisterMutateWebhook manages binding endpoint invocations to underlying business logic.
 func RegisterMutateWebhook(server *gin.Engine, holder *config.Holder) {
-	webhook := &mutateWebhook{holder }
+	webhook := &mutateWebhook{holder}
 
 	server.POST("/mutate", func(ctx *gin.Context) {
 		webhook.mutationHandler(ctx)

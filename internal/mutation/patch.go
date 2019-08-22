@@ -9,9 +9,9 @@ import (
 
 // Patch represents a JSON patch to be applied
 type Patch struct {
-	Op		string		`json:"op"`
-	Path	string		`json:"path"`
-	Value	interface{} `json:"value,omitempty"`
+	Op    string      `json:"op"`
+	Path  string      `json:"path"`
+	Value interface{} `json:"value,omitempty"`
 }
 
 const (
@@ -52,8 +52,8 @@ func PatchEnvVar(source, added []corev1.EnvVar, base string) *Patch {
 	envVars = append(envVars, source...)
 
 	return &Patch{
-		Op: "add",
-		Path: base,
+		Op:    "add",
+		Path:  base,
 		Value: envVars,
 	}
 }
