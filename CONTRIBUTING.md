@@ -4,8 +4,8 @@ All contributions are welcome to this project!
 
 The general process for contributing code is as follows.
 
-1. Open and issue describing the desired feature, bug fix, or improvment you'd like to see before making any changes.
-1. Assign the ticket to yourself
+1. Open an issue describing the desired feature, bug fix, or improvment you'd like to see before making any changes.
+1. Assign the ticket to yourself.
 1. Fork the repository and make the necessary changes on a branch identified by the issue (e.g. `gh-##`). This ensures the branch is linked to the corresponding issue.
 1. Open a [pull request](https://help.github.com/en/articles/about-pull-requests) for the maintainers of the repository to review.
 1. Be sure to add the maintainers to the pull request as reviewers to ensure a speedy review.
