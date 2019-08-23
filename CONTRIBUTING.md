@@ -10,7 +10,7 @@ The general process for contributing code is as follows.
 1. Open a [pull request](https://help.github.com/en/articles/about-pull-requests) for the maintainers of the repository to review.
 1. Be sure to add the maintainers to the pull request as reviewers to ensure a speedy review.
 1. Upon reviewing the changes, your change may be:
-    * merged, requiring no further changes on your part
+    * merged, requiring no further changes on your part.
     * annotated with a set of changes that must be made before the change will be merged.
 
 ## Unit Tests
