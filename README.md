@@ -1,3 +1,5 @@
+Status: **Indeed is no longer maintaining this application and the repo will be archived 4/6/21 **
+
 # ClusterPreset
 
 ClusterPreset is a [Kubernetes admission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) that injects common environment variables, volumes, and volume mounts into all pods running in the cluster.
