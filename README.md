@@ -1,4 +1,4 @@
-Status: **Indeed is no longer maintaining this application and the repo will be archived 4/6/21 **
+Status: Indeed is no longer maintaining this application and the repo will be archived 4/6/21
 
 # ClusterPreset
 
